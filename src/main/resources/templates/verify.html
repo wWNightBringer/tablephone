@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Verify</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    #MainForm {
+        margin: 50px 80%;
+        border: 1px solid black;
+        border-radius: 10px;
+        padding: 10px;
+        width: 210px;
+        height: 100%;
+    }
+
+    h2 {
+        margin: 0 30px 20px;
+        font-family: Georgia, Arial;
+    }
+
+    form {
+        padding: 10px 0 0;
+    }
+</style>
+<body>
+
+<div id="MainForm">
+    <h2>WELCOME</h2>
+    <!--/*@thymesVar id="autorize" type="com.example.tablephone.model.Authorize"*/-->
+    <form th:action="@{/verify}" th:object="${autorize}" method="post">
+        <div>
+            <div><input id="login" type="text" placeholder="Enter email" size="30" th:field="*{login}"></div>
+            <div><input id="password" type="password" placeholder="Enter password" size="30" th:field="*{password}">
+            </div>
+        </div>
+        <div>
+            <button type="submit" id="submit">Authorization</button>
+        </div>
+    </form>
+    <form th:action="@{/verify/registration}">
+        <input type="submit" value="Registration" id="Registration" th:href="@{/verify/registration}">
+    </form>
+
+    <!--/*@thymesVar id="error" type="com.example.tablephone.controllers.VerifyController"*/-->
+    <p th:if="${error}" th:utext="${error}" style="color: red; font-style: italic">...</p>
+
+
+</div>
+</body>
+</html>

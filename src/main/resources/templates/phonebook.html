@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Phonebook</title>
+</head>
+<body>
+<div>
+    <div>
+        <table id="table" border="1">
+            <caption><h2>Phone book</h2></caption>
+            <tr>
+                <th>Contact name</th>
+                <th>Address</th>
+                <th>Phone</th>
+                <th>Email</th>
+            </tr>
+            <!--/*@thymesVar id="information" type="com.example.tablephone.controllers"*/-->
+            <tr th:each="phone :${information}">
+                <td th:utext="${phone.contactName}">...</td>
+                <td th:utext="${phone.address}">...</td>
+                <td th:utext="${phone.phone}">...</td>
+                <td th:utext="${phone.email}">...</td>
+            </tr>
+        </table>
+    </div>
+    <div>
+        <table>
+            <tr>
+                <td>
+                    <form th:action="@{/Add}"><input type="submit" id="add" value="Add"></form></td>
+                <td><input type="submit" id="update" value="Update"></td>
+                <td><input type="submit" id="delete" value="Delete"></td>
+            </tr>
+        </table>
+    </div>
+
+</div>
+
+</body>
+</html>

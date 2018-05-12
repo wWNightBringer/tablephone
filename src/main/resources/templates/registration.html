@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration</title>
+    <link href="" rel="stylesheet">
+</head>
+<body>
+<div id="main">
+    <!--/*@thymesVar id="person" type="com.example.tablephone.model.Person"*/-->
+    <form th:action="@{/verify/registration}" th:object="${person}" method="post">
+        <div id="mainForm">
+            <table>
+                <tr>
+                    <td><p>Full name:</p></td>
+                    <td><input type="text" placeholder="Enter Name" size="30" class="fullName" th:field="*{fullName}"></td>
+                </tr>
+                <tr>
+                    <td><p>Login:</p></td>
+                    <td><input type="text" placeholder="Enter login" size="30" class="login" th:field="*{login}"></td>
+                </tr>
+                <tr>
+                    <td><p>Password:</p></td>
+                    <td><input type="password" placeholder="Enter password" size="30" class="password" th:field="*{password}"></td>
+                </tr>
+            </table>
+            <input type="submit" value="Press" style="font-style: inherit">
+        <!--/*@thymesVar id="error" type="com.example.tablephone.controllers.VerifyController"*/-->
+        <p th:if="${error}" th:utext="${error}" style="color: red; font-style: italic">...</p>
+        </div>
+    </form>
+</div>
+</body>
+</html>
