@@ -14,6 +14,6 @@ public interface PhonebookDAO {
     Iterable<Information> getAllPhone();
     Information getPhoneById(long id);
     void addPhoneByTable(Information information);
-    void deletePhoneByTable(Information information);
+    void deletePhoneByTable(String phone);
     void updatePhone(Information information);
 }

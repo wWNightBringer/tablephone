@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Verify</title>
@@ -18,14 +18,13 @@
         width: 210px;
         height: 100%;
     }
-
     h2 {
         margin: 0 30px 20px;
         font-family: Georgia, Arial;
     }
 
     form {
-        padding: 10px 0 0;
+
     }
 </style>
 <body>
@@ -34,17 +33,17 @@
     <h2>WELCOME</h2>
     <!--/*@thymesVar id="autorize" type="com.example.tablephone.model.Authorize"*/-->
     <form th:action="@{/verify}" th:object="${autorize}" method="post">
-        <div>
-            <div><input id="login" type="text" placeholder="Enter email" size="30" th:field="*{login}"></div>
-            <div><input id="password" type="password" placeholder="Enter password" size="30" th:field="*{password}">
+        <div class="form">
+            <div><input id="login" name="username" type="text" placeholder="Enter login" size="20" th:field="*{login}"></div>
+            <div><input id="password" name="password" type="password" placeholder="Enter password" size="20" th:field="*{password}">
             </div>
         </div>
         <div>
-            <button type="submit" id="submit">Authorization</button>
+            <input type="submit" id="submit" value="Authorization"/>
         </div>
     </form>
     <form th:action="@{/verify/registration}">
-        <input type="submit" value="Registration" id="Registration" th:href="@{/verify/registration}">
+        <input type="submit" value="Registration  " id="Registration" th:href="@{/verify/registration}">
     </form>
 
     <!--/*@thymesVar id="error" type="com.example.tablephone.controllers.VerifyController"*/-->

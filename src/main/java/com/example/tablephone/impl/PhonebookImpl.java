@@ -8,10 +8,7 @@ import com.example.tablephone.repository.PhonebookDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class PhonebookImpl implements PhonebookDAO {
@@ -24,8 +21,6 @@ public class PhonebookImpl implements PhonebookDAO {
     public PhonebookImpl(PersonRepository personRepository, PhoneRepository phoneRepository) {
         this.personRepository = personRepository;
         this.phoneRepository = phoneRepository;
-        personList = new ArrayList<>();
-        phoneList = new ArrayList<>();
     }
 
     public PhonebookImpl() {
@@ -34,6 +29,7 @@ public class PhonebookImpl implements PhonebookDAO {
 
     @Override
     public List<Person> getAllPerson() {
+        personList = new ArrayList<>();
         Iterable<Person> iterator = personRepository.findAll();
         for (Iterator<Person> p = iterator.iterator(); p.hasNext();) {
             Person person=p.next();
@@ -65,6 +61,7 @@ public class PhonebookImpl implements PhonebookDAO {
 
     @Override
     public List<Information> getAllPhone() {
+        phoneList = new ArrayList<>();
         Iterable<Information> iterator = phoneRepository.findAll();
         for (Iterator<Information> p = iterator.iterator(); p.hasNext();) {
             Information information=p.next();
@@ -85,12 +82,17 @@ public class PhonebookImpl implements PhonebookDAO {
     }
 
     @Override
-    public void deletePhoneByTable(Information phone) {
-        phoneRepository.delete(phone);
+    public void deletePhoneByTable(String phone) {
+        for(Information information:getAllPhone()){
+            if(Objects.equals(information.getPhone(), phone)){
+                phoneRepository.delete(information);
+            }
+        }
     }
 
     @Override
     public void updatePhone(Information phone) {
-        phoneRepository.save(phone);
+        Information information=new Information(phone.getContactName(),phone.getAddress(),phone.getPhone(),phone.getEmail());
+        phoneRepository.save(information);
     }
 }

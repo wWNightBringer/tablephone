@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Update data</title>
@@ -7,24 +7,30 @@
 <body>
 <div id="Main">
     <div>
-        <table>
-            <tr>
-                <td><p>Contact name:</p></td>
-                <td><input type="text" size="30" placeholder="Enter name"></td>
-            </tr>
-            <tr>
-                <td><p>Address:</p></td>
-                <td><input type="text" size="30" placeholder="Enter address"></td>
-            </tr>
-            <tr>
-                <td><p>Phone:</p></td>
-                <td><input type="tel" size="30" placeholder="Enter phone"></td>
-            </tr>
-            <tr>
-                <td><p>Email:</p></td>
-                <td><input type="email" size="30" placeholder="Enter email"></td>
-            </tr>
-        </table>
+        <!--/*@thymesVar id="information" type="com.example.tablephone.model.Information"*/-->
+        <form th:action="@{/phonebook/update}" th:object="${information}" method="post">
+            <table>
+                <tr>
+                    <td><p>Contact name:</p></td>
+                    <td><input type="text" size="30" placeholder="Enter name" th:field="*{contactName}"></td>
+                </tr>
+                <tr>
+                    <td><p>Address:</p></td>
+                    <td><input type="text" size="30" placeholder="Enter address" th:field="*{address}"></td>
+                </tr>
+                <tr>
+                    <td><p>Phone:</p></td>
+                    <td><input type="tel" size="30" placeholder="Enter phone" th:field="*{phone}"></td>
+                </tr>
+                <tr>
+                    <td><p>Email:</p></td>
+                    <td><input type="email" size="30" placeholder="Enter email" th:field="*{email}"></td>
+                </tr>
+            </table>
+            <!--/*@thymesVar id="error" type="com.example.tablephone.controllers.MainController"*/-->
+            <p  th:if="${error}" th:utext="${error}" style="color: red; font-style: italic">...</p>
+        </form>
+       <form th:action="@{/phonebook}"> <button type="submit" style="font-style: inherit">Submit</button></form>
     </div>
 </div>
 </body>

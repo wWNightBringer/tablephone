@@ -13,7 +13,7 @@ import javax.persistence.Id;
 public class Information {
     private int id;
     @Form(
-            value = "+[0-9]{2}[0-9]{10}$",
+            value = "[0-9]{12}",
             message = "Correct phone",
             errorMessage = "Invalid phone"
     )
