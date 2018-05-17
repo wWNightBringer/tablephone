@@ -3,51 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <title>Verify</title>
+    <link th:href="@{/css/verify.css}" rel="stylesheet" href="../static/css/verify.css">
 </head>
-<style>
-    * {
-        margin: 0;
-        padding: 0;
-    }
-
-    #MainForm {
-        margin: 50px 80%;
-        border: 1px solid black;
-        border-radius: 10px;
-        padding: 10px;
-        width: 210px;
-        height: 100%;
-    }
-    h2 {
-        margin: 0 30px 20px;
-        font-family: Georgia, Arial;
-    }
-
-    form {
-
-    }
-</style>
 <body>
 
-<div id="MainForm">
-    <h2>WELCOME</h2>
-    <!--/*@thymesVar id="autorize" type="com.example.tablephone.model.Authorize"*/-->
-    <form th:action="@{/verify}" th:object="${autorize}" method="post">
-        <div class="form">
-            <div><input id="login" name="username" type="text" placeholder="Enter login" size="20" th:field="*{login}"></div>
-            <div><input id="password" name="password" type="password" placeholder="Enter password" size="20" th:field="*{password}">
+<div>
+    <div id="MainForm">
+        <h3>Entrance</h3>
+        <!--/*@thymesVar id="autorize" type="com.example.tablephone.model.Authorize"*/-->
+        <form th:action="@{/verify}" th:object="${autorize}" method="post">
+            <div class="form">
+                <div><input class="text" id="login" name="username" type="text" placeholder="Enter login" size="25"
+                            th:field="*{login}"></div>
+                <div><input class="text" id="password" name="password" type="password" placeholder="Enter password"
+                            size="25"
+                            th:field="*{password}">
+                </div>
             </div>
-        </div>
-        <div>
-            <input type="submit" id="submit" value="Authorization"/>
-        </div>
-    </form>
-    <form th:action="@{/verify/registration}">
-        <input type="submit" value="Registration  " id="Registration" th:href="@{/verify/registration}">
-    </form>
+            <!--/*@thymesVar id="error" type="com.example.tablephone.controllers.VerifyController"*/-->
+            <p th:if="${error}" th:utext="${error}" style="color: red; font-style: italic">...</p>
+                        <input class="button" type="submit" id="submit" value="Continue"/>
 
-    <!--/*@thymesVar id="error" type="com.example.tablephone.controllers.VerifyController"*/-->
-    <p th:if="${error}" th:utext="${error}" style="color: red; font-style: italic">...</p>
+
+        </form>
+        <form th:action="@{/verify/registration}">
+            <input class="buttonRegistration" type="submit" value="Create account  " id="Registration"
+                   th:href="@{/verify/registration}">
+        </form>
+
+    </div>
 
 
 </div>

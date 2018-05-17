@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Delete data</title>
+    <link rel="stylesheet" href="../static/css/delete.css" th:href="@{/css/delete.css}">
 </head>
 <body>
 <div id="Main">
@@ -15,10 +16,9 @@
                     <td><input type="tel" size="30" placeholder="Enter phone" th:field="*{phone}"></td>
                 </tr>
             </table>
-            <input type="submit" value="Submit">
+            <button type="submit">DELETE</button>
             <p th:if="${error}" th:utext="${error}" style="color: red; font-style: italic">...</p>
         </form>
-
     </div>
 </div>
 </body>

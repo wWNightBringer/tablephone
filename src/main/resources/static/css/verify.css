@@ -1,0 +1,47 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#MainForm {
+    margin: 10% 38%;
+    border: 1px solid white;
+    border-radius: 10px;
+    width: 24%;
+    height: 100%;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+h3 {
+    margin: 0 5px 35px;
+    font-family: Georgia, Arial;
+    padding: 50px 16% 0 ;
+    font-style: italic;
+    color: #383e3c;
+}
+input.button{
+    margin-left: 58%;
+    font-size: 20px;
+    border-radius: 5px;
+    padding: 2px;
+    font-style: oblique;
+    background: #5862ff;
+    color: white;
+}
+input.buttonRegistration{
+    margin-left: 10%;
+    border: hidden;
+    background: white;
+    color: #5862ff;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #5862ff;
+}
+input.text{
+    font-size: 16px;
+    margin-left: 18%;
+    margin-bottom: 40px;
+    border: hidden;
+    border-bottom: 2px solid #5862ff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    padding: 5px;
+
+}

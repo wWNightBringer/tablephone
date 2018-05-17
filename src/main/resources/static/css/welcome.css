@@ -1,0 +1,12 @@
+h1{
+    font-style: inherit;
+}
+
+p{
+    font-family: Georgia,Arial;
+    font-size: 18px;
+    font-style: italic;
+    color: darkred;
+}#title{
+    margin: 20px 40%;
+ }

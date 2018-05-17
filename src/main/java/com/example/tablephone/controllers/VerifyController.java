@@ -3,10 +3,10 @@ package com.example.tablephone.controllers;
 import com.example.tablephone.impl.PhonebookImpl;
 import com.example.tablephone.model.Autorize;
 import com.example.tablephone.model.Person;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.autoconfigure.security.servlet.SpringBootWebSecurityConfiguration;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,8 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
-/*@EnableWebSecurity*/
-public class VerifyController /*extends WebSecurityConfigurerAdapter*/ {
+public class VerifyController {
     private int id;
     private Autorize autorize;
     private String login;
@@ -28,38 +27,7 @@ public class VerifyController /*extends WebSecurityConfigurerAdapter*/ {
     public VerifyController(Autorize autorize, PhonebookImpl phonebook) throws Exception {
         this.autorize = autorize;
         this.phonebook = phonebook;
-
     }
-
-  /*  @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http
-                .authorizeRequests()
-                .antMatchers().permitAll()
-                .anyRequest().authenticated()
-                .and()
-                .formLogin()
-                .loginPage("/verify")
-                .permitAll()
-                .and()
-                .logout().logoutUrl("/phonebook").logoutSuccessUrl("/phonebook");
-        http.authorizeRequests().and().exceptionHandling().accessDeniedPage("/403");
-
-    }
-
-    @Bean
-
-    @Override
-    public UserDetailsService userDetailsService() {
-        UserDetails user =
-                User.withDefaultPasswordEncoder()
-                        .username("user")
-                        .password("4862")
-                        .roles("USER")
-                        .build();
-
-        return new InMemoryUserDetailsManager(user);
-    }*/
 
     @GetMapping("/verify")
     public String verify(Model model) {

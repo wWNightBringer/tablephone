@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Phonebook</title>
+    <link rel="stylesheet" href="../static/css/phonebook.css" th:href="@{/css/phonebook.css}">
 </head>
 <body>
 <div>
-    <div>
+    <div class="mainForm">
         <form th:action="@{/logout}" method="post">
-            <table id="table" border="1">
-                <caption><h2>Phone book</h2></caption>
+            <table class="table">
+                <caption><p>Contacts</p></caption>
                 <tr>
                     <th>Contact name</th>
                     <th>Address</th>
@@ -18,27 +19,27 @@
                 </tr>
                 <!--/*@thymesVar id="information" type="com.example.tablephone.controllers"*/-->
                 <tr th:each="phone :${information}">
-                    <td th:utext="${phone.contactName}">...</td>
-                    <td th:utext="${phone.address}">...</td>
-                    <td th:utext="${phone.phone}">...</td>
-                    <td th:utext="${phone.email}">...</td>
+                    <td class="text" th:utext="${phone.contactName}">...</td>
+                    <td class="text" th:utext="${phone.address}">...</td>
+                    <td class="text" th:utext="${phone.phone}">...</td>
+                    <td class="text" th:utext="${phone.email}">...</td>
                 </tr>
             </table>
         </form>
 
-    </div>
-    <div>
-        <table>
+
+        <div>
+        <table id="table2">
             <tr>
-                <td>
-                    <form th:action="@{/phonebook/add}"><input type="submit" id="add" value="Add"></form></td>
-                <td>
-                    <form th:action="@{/phonebook/delete}"><input type="submit" id="delete" value="Delete"></form>
-                </td>
+                <td class="input"> <form th:action="@{/phonebook/add}"><input type="submit" id="add" value="Add "></form></td>
+                <td class="input">  <form th:action="@{/phonebook/delete}"><input type="submit" id="delete" value="Delete"></form></td>
             </tr>
         </table>
-    </div>
 
+
+
+        </div>
+    </div>
 </div>
 
 </body>

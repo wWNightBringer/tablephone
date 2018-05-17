@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <link rel="stylesheet" href="../static/css/add.css" th:href="@{/css/add.css}">
     <meta charset="UTF-8">
     <title>Insert data</title>
 </head>
@@ -27,7 +28,7 @@
                     <td><input type="email" size="30" placeholder="Enter email" th:field="*{email}"></td>
                 </tr>
             </table>
-            <button type="submit" style="font-style: inherit">Submit</button>
+            <button type="submit">ADD</button>
             <!--/*@thymesVar id="error" type="com.example.tablephone.controllers.MainController"*/-->
             <p th:if="${error}" th:utext="${error}"style="color: red; font-style: italic">...</p>
         </form>

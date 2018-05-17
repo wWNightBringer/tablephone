@@ -37,6 +37,10 @@ public class MainController {
         this.verifyController = verifyController;
     }
 
+    @GetMapping("/")
+    public String welcome() {
+        return "welcome";
+    }
 
     @GetMapping("/phonebook")
     public String phonebook(Model model) {
@@ -59,8 +63,14 @@ public class MainController {
     @PostMapping("/verify/registration")
     public String registrationPost(@ModelAttribute Person person, Model model) throws IllegalAccessException {
         if (!validateObject.checkForm(person)) {
-            phonebook.addPersonByTable(person);
-            return "redirect:/phonebook";
+            try {
+                phonebook.addPersonByTable(person);
+                return "redirect:/phonebook";
+            } catch (Exception e) {
+                model.addAttribute("error", error);
+                return "registration";
+            }
+
         }
         model.addAttribute("error", error);
         return "registration";
@@ -76,32 +86,19 @@ public class MainController {
     public String addToDatabasePost(@ModelAttribute Information information, Model model) throws IllegalAccessException {
         if (!validateObject.checkForm(information)) {
             information.setPersonId(verifyController.getId());
-            phonebook.addPhoneByTable(information);
-            return "redirect:/phonebook";
+            try {
+                phonebook.addPhoneByTable(information);
+                return "redirect:/phonebook";
+            } catch (Exception ex) {
+                model.addAttribute("error", error);
+                return "add";
+            }
+
         }
         model.addAttribute("error", error);
         return "add";
     }
-/*
-    @GetMapping("/phonebook/update")
-    public String updateDatabase(Model model) {
-        model.addAttribute("information", information);
-        return "update";
-    }
 
-    @PostMapping("/phonebook/update")
-    public String updateDatabasePost(@ModelAttribute Information information, Model model) throws IllegalAccessException {
-        if (!validateObject.checkForm(information)) {
-            for(Information inf:phonebook.getAllPhone()){
-                if(information.getPhone().equals(inf.getPhone()) || information.getEmail().equals(inf.getEmail())){
-                    phonebook.updatePhone(information);
-                    return "redirect:/phonebook";
-                }
-            }
-        }
-        model.addAttribute("error", error);
-        return "update";
-    }*/
 
     @GetMapping("/phonebook/delete")
     public String deleteContact(Model model) {
@@ -112,8 +109,14 @@ public class MainController {
     @PostMapping("/phonebook/delete")
     public String deleteContactPost(@ModelAttribute Information information, Model model) throws IllegalAccessException {
         if (!validateObject.checkForm(information)) {
-            phonebook.deletePhoneByTable(information.getPhone());
-            return "redirect:/phonebook";
+            try {
+                phonebook.deletePhoneByTable(information.getPhone());
+                return "redirect:/phonebook";
+            } catch (Exception ex) {
+                model.addAttribute("error", error);
+                return "add";
+            }
+
         }
         model.addAttribute("error", error);
         return "delete";

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Registration</title>
-    <link href="" rel="stylesheet">
+    <link href="../static/css/registration.css" rel="stylesheet" th:href="@{/css/registration.css}">
 </head>
 <body>
 <div id="main">
@@ -24,7 +24,7 @@
                     <td><input type="password" placeholder="Enter password" size="30" class="password" th:field="*{password}"></td>
                 </tr>
             </table>
-            <input type="submit" value="Press" style="font-style: inherit">
+            <button type="submit">ADD</button>
             <!--/*@thymesVar id="error" type="com.example.tablephone.controllers.MainController"*/-->
         <p th:if="${error}" th:utext="${error}" style="color: red; font-style: italic">...</p>
         </div>
