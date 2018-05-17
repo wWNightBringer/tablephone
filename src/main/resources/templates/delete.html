@@ -16,7 +16,7 @@
                     <td><input type="tel" size="30" placeholder="Enter phone" th:field="*{phone}"></td>
                 </tr>
             </table>
-            <button type="submit">DELETE</button>
+            <input class="input" type="submit" value="DELETE">
             <p th:if="${error}" th:utext="${error}" style="color: red; font-style: italic">...</p>
         </form>
     </div>

@@ -24,7 +24,7 @@
                     <td><input type="password" placeholder="Enter password" size="30" class="password" th:field="*{password}"></td>
                 </tr>
             </table>
-            <button type="submit">ADD</button>
+            <input class="input" type="submit" value="ADD">
             <!--/*@thymesVar id="error" type="com.example.tablephone.controllers.MainController"*/-->
         <p th:if="${error}" th:utext="${error}" style="color: red; font-style: italic">...</p>
         </div>

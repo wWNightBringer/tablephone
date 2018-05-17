@@ -90,6 +90,7 @@ public class MainController {
                 phonebook.addPhoneByTable(information);
                 return "redirect:/phonebook";
             } catch (Exception ex) {
+                System.out.println("Error");
                 model.addAttribute("error", error);
                 return "add";
             }

@@ -28,7 +28,7 @@
                     <td><input type="email" size="30" placeholder="Enter email" th:field="*{email}"></td>
                 </tr>
             </table>
-            <button type="submit">ADD</button>
+            <input class="input" type="submit" value="ADD">
             <!--/*@thymesVar id="error" type="com.example.tablephone.controllers.MainController"*/-->
             <p th:if="${error}" th:utext="${error}"style="color: red; font-style: italic">...</p>
         </form>
